@@ -15,6 +15,7 @@ import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import com.cburch.logisim.prefs.AppPreferences;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;

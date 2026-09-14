@@ -11,6 +11,7 @@ package com.cburch.logisim.analyze.gui;
 
 import static com.cburch.logisim.analyze.Strings.S;
 
+import com.cburch.logisim.prefs.AppPreferences;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Color;

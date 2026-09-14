@@ -759,18 +759,24 @@ public class RightPanel extends JPanel {
           g.drawLine(x, h - 2, x, h);
         }
       }
-
-      private Color getWaveBackground() {
-        final var background = UIManager.getColor("Panel.background");
-        return background != null ? background : (AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get()) ? new Color(0x2B, 0x2B, 0x2B) : Color.WHITE);
-      }
-
-      private Color getWaveForeground() {
-        final var foreground = UIManager.getColor("Label.foreground");
-        return foreground != null ? foreground : (AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get()) ? Color.WHITE : Color.BLACK);
-      }
       g.setFont(f);
     }
+  }
+
+  private Color getWaveBackground() {
+    final var background = UIManager.getColor("Panel.background");
+    return background != null
+        ? background
+        : (AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get())
+            ? new Color(0x2B, 0x2B, 0x2B)
+            : Color.WHITE);
+  }
+
+  private Color getWaveForeground() {
+    final var foreground = UIManager.getColor("Label.foreground");
+    return foreground != null
+        ? foreground
+        : (AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get()) ? Color.WHITE : Color.BLACK);
   }
 
   @Override

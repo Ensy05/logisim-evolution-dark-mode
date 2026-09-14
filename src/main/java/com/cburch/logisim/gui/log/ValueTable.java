@@ -13,6 +13,7 @@ import static com.cburch.logisim.gui.Strings.S;
 
 import com.cburch.logisim.data.BitWidth;
 import com.cburch.logisim.data.Value;
+import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.BorderLayout;
 import java.awt.Color;

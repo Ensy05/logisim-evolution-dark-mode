@@ -437,15 +437,15 @@ public class AppPreferences {
     } else {
       return null;
     }
+  }
 
-    public static String getConfiguredAppFontFamily() {
-      final var appFont = APP_FONT.get();
-      return (appFont == null || appFont.isBlank()) ? DEFAULT_APP_FONT_FAMILY : appFont;
-    }
+  public static String getConfiguredAppFontFamily() {
+    final var appFont = APP_FONT.get();
+    return (appFont == null || appFont.isBlank()) ? DEFAULT_APP_FONT_FAMILY : appFont;
+  }
 
-    public static Font createAppFont(int style, int size) {
-      return new Font(getConfiguredAppFontFamily(), style, size);
-    }
+  public static Font createAppFont(int style, int size) {
+    return new Font(getConfiguredAppFontFamily(), style, size);
   }
 
   public static ImageIcon getScaledImageIcon(ImageIcon icon) {

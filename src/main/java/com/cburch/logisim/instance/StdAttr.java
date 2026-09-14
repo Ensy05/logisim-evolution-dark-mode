@@ -46,9 +46,7 @@ public interface StdAttr {
   Font DEFAULT_LABEL_FONT = AppPreferences.createAppFont(Font.BOLD, 16);
   Attribute<Color> LABEL_COLOR = Attributes.forColor("labelcolor", S.getter("ioLabelColorAttr"));
   Color DARK_DEFAULT_LABEL_COLOR = new Color(0x6C, 0xB6, 0xFF);
-  Color DEFAULT_LABEL_COLOR = AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get())
-      ? new Color(0x6C, 0xB6, 0xFF)
-      : Color.BLUE;
+  Color DEFAULT_LABEL_COLOR = Color.BLUE;
 
   static Color getDefaultLabelColor() {
     return AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get())

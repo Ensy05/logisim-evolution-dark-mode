@@ -13,6 +13,7 @@ import com.cburch.contracts.BaseMouseListenerContract;
 import com.cburch.contracts.BaseWindowListenerContract;
 import com.cburch.logisim.fpga.data.FpgaCommanderListModel;
 import com.cburch.logisim.fpga.designrulecheck.SimpleDrcContainer;
+import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.proj.Project;
 import java.awt.Color;
 import java.awt.Component;

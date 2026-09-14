@@ -10,6 +10,9 @@
 package com.cburch.logisim.std.wiring;
 import static com.cburch.logisim.std.Strings.S;
 
+import com.cburch.draw.shapes.SvgCreator;
+import com.cburch.draw.shapes.SvgReader;
+import com.cburch.draw.util.EditableLabel;
 import com.cburch.logisim.circuit.CircuitState;
 import com.cburch.logisim.circuit.RadixOption;
 import com.cburch.logisim.circuit.appear.DynamicElement;
@@ -17,12 +20,10 @@ import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.data.Bounds;
 import com.cburch.logisim.data.Value;
 import com.cburch.logisim.instance.StdAttr;
+import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.std.base.Text;
 import com.cburch.logisim.util.StringUtil;
 import com.cburch.logisim.util.UnmodifiableList;
-import com.cburch.draw.util.EditableLabel;
-import com.cburch.draw.shapes.SvgReader;
-import com.cburch.draw.shapes.SvgCreator;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;

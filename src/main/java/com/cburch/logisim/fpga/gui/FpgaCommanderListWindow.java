@@ -12,6 +12,7 @@ package com.cburch.logisim.fpga.gui;
 import com.cburch.contracts.BaseListDataListenerContract;
 import com.cburch.contracts.BaseWindowListenerContract;
 import com.cburch.logisim.fpga.data.FpgaCommanderListModel;
+import com.cburch.logisim.prefs.AppPreferences;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.WindowEvent;

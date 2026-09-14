@@ -21,6 +21,7 @@ import com.cburch.logisim.gui.main.SimulationToolbarModel;
 import com.cburch.logisim.gui.menu.EditHandler;
 import com.cburch.logisim.gui.menu.LogisimMenuBar;
 import com.cburch.logisim.gui.menu.PrintHandler;
+import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.BorderLayout;
 import java.awt.Color;

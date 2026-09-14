@@ -19,6 +19,7 @@ import com.cburch.logisim.circuit.Simulator;
 import com.cburch.logisim.comp.Component;
 import com.cburch.logisim.gui.generic.LFrame;
 import com.cburch.logisim.instance.StdAttr;
+import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.proj.Project;
 import com.cburch.logisim.std.memory.Register;
 import java.awt.BorderLayout;
