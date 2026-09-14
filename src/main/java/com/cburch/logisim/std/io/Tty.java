@@ -61,7 +61,7 @@ public class Tty extends InstanceFactory implements DynamicElementProvider {
   public static final int COL_WIDTH = 7;
 
   private static final Color DEFAULT_BACKGROUND = new Color(0, 0, 0, 64);
-  public static final Font DEFAULT_FONT = new Font("monospaced", Font.PLAIN, 11);
+  public static final Font DEFAULT_FONT = AppPreferences.createAppFont(Font.PLAIN, 11);
 
   private static final Attribute<Integer> ATTR_COLUMNS =
       Attributes.forIntegerRange("cols", S.getter("ttyColsAttr"), 1, 120);

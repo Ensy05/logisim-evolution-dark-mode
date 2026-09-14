@@ -38,20 +38,20 @@ public class SimulationIcon extends BaseIcon {
   protected void paintIcon(Graphics2D g2) {
     final var wh = getIconWidth() - scale(1);
     g2.setStroke(new BasicStroke(scale(1)));
-    g2.setColor(currentType > SIM_STEP ? Color.LIGHT_GRAY : Color.WHITE);
+    g2.setColor(currentType > SIM_STEP ? getControlShadeColor() : getControlFillColor());
     g2.fillOval(0, 0, wh, wh);
     if (currentType > SIM_STEP) {
-      g2.setColor(Color.WHITE);
+      g2.setColor(getControlFillColor());
       final var wh1 = wh - scale(4);
       g2.fillOval(scale(2), scale(2), wh1, wh1);
       g2.setStroke(new BasicStroke(scale(2)));
-      g2.setColor(Color.BLACK);
+      g2.setColor(getThemeTextColor());
       g2.drawLine(getIconWidth() / 2, getIconWidth() / 2, (3 * wh) / 4, wh / 4);
       g2.setColor(Color.RED);
       g2.drawLine(getIconWidth() / 2, getIconWidth() / 2, wh / 4, wh / 4);
       g2.setStroke(new BasicStroke(scale(1)));
     }
-    g2.setColor(Color.DARK_GRAY);
+    g2.setColor(getThemeTextColor());
     g2.drawOval(0, 0, wh, wh);
     switch (currentType) {
       case SIM_STEP:

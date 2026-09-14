@@ -12,6 +12,7 @@ package com.cburch.logisim.fpga.gui;
 import com.cburch.contracts.BaseListDataListenerContract;
 import com.cburch.contracts.BaseWindowListenerContract;
 import com.cburch.logisim.fpga.data.FpgaCommanderListModel;
+import com.cburch.logisim.prefs.AppPreferences;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.WindowEvent;
@@ -46,7 +47,7 @@ public class FpgaCommanderListWindow extends JFrame
     textArea.setForeground(fg);
     textArea.setSelectionBackground(fg);
     textArea.setSelectionForeground(bg);
-    textArea.setFont(new Font("monospaced", Font.PLAIN, 14));
+    textArea.setFont(AppPreferences.createAppFont(Font.PLAIN, 14));
     textArea.setModel(model);
     textArea.setCellRenderer(model.getMyRenderer());
     textArea.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

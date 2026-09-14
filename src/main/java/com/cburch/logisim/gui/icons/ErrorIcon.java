@@ -82,7 +82,7 @@ public class ErrorIcon implements Icon {
     final var yc = (float) mywh / (float) 2 - (float) t.getBounds().getCenterY();
     t.draw(g2, xc, yc);
     if (forwardArrow) {
-      g2.setColor(Color.BLACK);
+      g2.setColor(new Color(AppPreferences.COMPONENT_ICON_COLOR.get()));
       final var five = (5 * wh) >> 3;
       final var six = (6 * wh) >> 3;
       final var seven = (7 * wh) >> 3;
@@ -94,7 +94,7 @@ public class ErrorIcon implements Icon {
       g2.fillPolygon(axPos, ayPos, 7);
     }
     if (backwardArrow) {
-      g2.setColor(Color.BLACK);
+      g2.setColor(new Color(AppPreferences.COMPONENT_ICON_COLOR.get()));
       final var three = (3 * wh) >> 3;
       final var six = (6 * wh) >> 3;
       final var seven = (7 * wh) >> 3;

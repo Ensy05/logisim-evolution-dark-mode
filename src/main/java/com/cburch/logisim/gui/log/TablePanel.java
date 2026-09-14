@@ -15,6 +15,7 @@ import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import com.cburch.logisim.prefs.AppPreferences;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -27,8 +28,8 @@ import javax.swing.event.ChangeListener;
 
 class TablePanel extends LogPanel {
   private static final long serialVersionUID = 1L;
-  private static final Font HEAD_FONT = new Font("Serif", Font.BOLD, 14);
-  private static final Font BODY_FONT = new Font("Serif", Font.PLAIN, 14);
+  private static final Font HEAD_FONT = AppPreferences.createAppFont(Font.BOLD, 14);
+  private static final Font BODY_FONT = AppPreferences.createAppFont(Font.PLAIN, 14);
   private static final int COLUMN_SEP = 8;
   private static final int HEADER_SEP = 4;
   private final MyListener myListener = new MyListener();

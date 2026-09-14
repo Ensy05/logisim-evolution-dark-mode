@@ -21,6 +21,7 @@ import com.cburch.logisim.gui.main.SimulationToolbarModel;
 import com.cburch.logisim.gui.menu.EditHandler;
 import com.cburch.logisim.gui.menu.LogisimMenuBar;
 import com.cburch.logisim.gui.menu.PrintHandler;
+import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -72,9 +73,10 @@ public class ChronoPanel extends LogPanel implements Model.Listener {
     super(logFrame);
     selectBg = UIManager.getDefaults().getColor("List.selectionBackground");
     selectHi = darker(selectBg);
+    final var waveLineColor = getThemeForeground();
     selectColors =
         new Color[] {
-          selectBg, selectHi, SELECT_LINE, SELECT_ERR, SELECT_ERRLINE, SELECT_UNK, SELECT_UNKLINE
+          selectBg, selectHi, waveLineColor, SELECT_ERR, waveLineColor, SELECT_UNK, waveLineColor
         };
     setModel(logFrame.getModel());
     configure();
@@ -285,37 +287,55 @@ public class ChronoPanel extends LogPanel implements Model.Listener {
 
   private static final Color PLAIN_BG = new Color(0xbb, 0xbb, 0xbb);
   private static final Color PLAIN_HI = darker(PLAIN_BG);
-  private static final Color PLAIN_LINE = Color.BLACK;
   private static final Color PLAIN_ERR = new Color(0xdb, 0x9d, 0x9d);
-  private static final Color PLAIN_ERRLINE = Color.BLACK;
   private static final Color PLAIN_UNK = new Color(0xea, 0xaa, 0x6c);
-  private static final Color PLAIN_UNKLINE = Color.BLACK;
   private static final Color SPOT_BG = new Color(0xaa, 0xff, 0xaa);
   private static final Color SPOT_HI = darker(SPOT_BG);
-  private static final Color SPOT_LINE = Color.BLACK;
   private static final Color SPOT_ERR = new Color(0xf9, 0x76, 0x76);
-  private static final Color SPOT_ERRLINE = Color.BLACK;
   private static final Color SPOT_UNK = new Color(0xea, 0x98, 0x49);
-  private static final Color SPOT_UNKLINE = Color.BLACK;
+  private static final Color DARK_PLAIN_BG = new Color(0x4b, 0x55, 0x63);
+  private static final Color DARK_PLAIN_HI = darker(DARK_PLAIN_BG);
+  private static final Color DARK_PLAIN_ERR = new Color(0x7f, 0x3b, 0x3b);
+  private static final Color DARK_PLAIN_UNK = new Color(0x8a, 0x5a, 0x20);
+  private static final Color DARK_SPOT_BG = new Color(0x1f, 0x6f, 0x4a);
+  private static final Color DARK_SPOT_HI = darker(DARK_SPOT_BG);
+  private static final Color DARK_SPOT_ERR = new Color(0xa8, 0x4f, 0x4f);
+  private static final Color DARK_SPOT_UNK = new Color(0xb4, 0x73, 0x2f);
   private final Color selectBg; // set in constructor
   private final Color selectHi; // set in constructor
-  private static final Color SELECT_LINE = Color.BLACK;
   private static final Color SELECT_ERR = new Color(0xe5, 0x80, 0x80);
-  private static final Color SELECT_ERRLINE = Color.BLACK;
   private static final Color SELECT_UNK = new Color(0xee, 0x99, 0x44);
-  private static final Color SELECT_UNKLINE = Color.BLACK;
-  private static final Color[] SPOT = {
-    SPOT_BG, SPOT_HI, SPOT_LINE, SPOT_ERR, SPOT_ERRLINE, SPOT_UNK, SPOT_UNKLINE
-  };
-  private static final Color[] PLAIN = {
-    PLAIN_BG, PLAIN_HI, PLAIN_LINE, PLAIN_ERR, PLAIN_ERRLINE, PLAIN_UNK, PLAIN_UNKLINE
-  };
   private final Color[] selectColors; // set in constructor
 
   public Color[] rowColors(SignalInfo item, boolean isSelected) {
     if (isSelected) return selectColors;
     final var spotlight = model.getSpotlight();
-    return (spotlight != null && spotlight.info == item) ? SPOT : PLAIN;
+    return (spotlight != null && spotlight.info == item) ? getSpotColors() : getPlainColors();
+  }
+
+  private static Color getThemeForeground() {
+    final var color = UIManager.getDefaults().getColor("Panel.foreground");
+    return color != null ? color : (AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get()) ? Color.WHITE : Color.BLACK);
+  }
+
+  private static Color[] getPlainColors() {
+    final var lineColor = getThemeForeground();
+    if (AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get())) {
+      return new Color[] {
+        DARK_PLAIN_BG, DARK_PLAIN_HI, lineColor, DARK_PLAIN_ERR, lineColor, DARK_PLAIN_UNK, lineColor
+      };
+    }
+    return new Color[] {PLAIN_BG, PLAIN_HI, lineColor, PLAIN_ERR, lineColor, PLAIN_UNK, lineColor};
+  }
+
+  private static Color[] getSpotColors() {
+    final var lineColor = getThemeForeground();
+    if (AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get())) {
+      return new Color[] {
+        DARK_SPOT_BG, DARK_SPOT_HI, lineColor, DARK_SPOT_ERR, lineColor, DARK_SPOT_UNK, lineColor
+      };
+    }
+    return new Color[] {SPOT_BG, SPOT_HI, lineColor, SPOT_ERR, lineColor, SPOT_UNK, lineColor};
   }
 
   private static Color darker(Color c) {

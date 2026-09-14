@@ -149,7 +149,7 @@ public class Keyboard extends InstanceFactory {
 
   static final int HEIGHT = 25;
 
-  private static final Font DEFAULT_FONT = new Font("monospaced", Font.PLAIN, 12);
+  private static final Font DEFAULT_FONT = AppPreferences.createAppFont(Font.PLAIN, 12);
 
   private static final char FORM_FEED = 12; // control-L (LINE FEED)
 

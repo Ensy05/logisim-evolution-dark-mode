@@ -18,9 +18,9 @@ public class LedMatrixIcon extends BaseIcon {
   @Override
   protected void paintIcon(Graphics2D g2) {
     g2.setStroke(new BasicStroke(scale(2)));
-    g2.setColor(Color.WHITE);
+    g2.setColor(getControlFillColor());
     g2.fillRect(0, 0, scale(16), scale(16));
-    g2.setColor(Color.BLACK);
+    g2.setColor(getThemeTextColor());
     g2.drawRect(0, 0, scale(16), scale(16));
     final var xint = 2;
     final var yint = 1;

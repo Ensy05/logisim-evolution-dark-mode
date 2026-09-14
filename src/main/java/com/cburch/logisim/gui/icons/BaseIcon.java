@@ -10,12 +10,14 @@
 package com.cburch.logisim.gui.icons;
 
 import com.cburch.logisim.prefs.AppPreferences;
+import com.cburch.logisim.util.ColorUtil;
 
 import java.awt.BasicStroke;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
+import javax.swing.UIManager;
 
 public abstract class BaseIcon implements javax.swing.Icon {
 
@@ -64,11 +66,38 @@ public abstract class BaseIcon implements javax.swing.Icon {
       g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
       g2.setRenderingHint(java.awt.RenderingHints.KEY_STROKE_CONTROL, java.awt.RenderingHints.VALUE_STROKE_PURE);
     }
-    g2.setColor(new Color(AppPreferences.COMPONENT_ICON_COLOR.get()));
+    g2.setColor(getIconForeground());
     g2.setStroke(new BasicStroke(AppPreferences.getScaled(1)));
     g2.translate(x, y);
     paintIcon(g2);
     g2.dispose();
+  }
+
+  protected Color getIconForeground() {
+    return new Color(AppPreferences.COMPONENT_ICON_COLOR.get());
+  }
+
+  protected Color getThemeTextColor() {
+    final var color = UIManager.getColor("Label.foreground");
+    return color != null ? color : getIconForeground();
+  }
+
+  protected Color getControlFillColor() {
+    final var color = UIManager.getColor("Panel.background");
+    if (color != null) {
+      return color;
+    }
+    return AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get()) ? new Color(0x3C3F41) : Color.WHITE;
+  }
+
+  protected Color getControlShadeColor() {
+    return AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get())
+        ? getControlFillColor().brighter()
+        : Color.LIGHT_GRAY;
+  }
+
+  protected Color getContrastingTextColor(Color color) {
+    return ColorUtil.getComplementaryBlackWhite(color);
   }
 
   protected abstract void paintIcon(Graphics2D g2);

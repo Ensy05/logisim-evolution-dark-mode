@@ -733,8 +733,8 @@ public class Pin extends InstanceFactory {
       Attributes.forHexLong("initial", S.getter("pinResetValue"));;
 
   public static final Pin FACTORY = new Pin();
-  private static final Font ICON_WIDTH_FONT = new Font("SansSerif", Font.BOLD, 9);
-  public static final Font DEFAULT_FONT = new Font("monospaced", Font.PLAIN, 12);
+  private static final Font ICON_WIDTH_FONT = AppPreferences.createAppFont(Font.BOLD, 9);
+  public static final Font DEFAULT_FONT = AppPreferences.createAppFont(Font.PLAIN, 12);
   private static final Color ICON_WIDTH_COLOR = Value.widthErrorColor.darker();
   public static final int DIGIT_WIDTH = 8;
 

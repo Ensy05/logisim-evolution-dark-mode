@@ -19,6 +19,7 @@ import com.cburch.logisim.circuit.appear.DynamicElement;
 import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.data.Bounds;
 import com.cburch.logisim.instance.StdAttr;
+import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.std.base.Text;
 import com.cburch.logisim.util.GraphicsUtil;
 import com.cburch.logisim.util.StringUtil;
@@ -31,7 +32,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class RegisterShape extends DynamicElement {
-  static final Font DEFAULT_FONT = new Font("monospaced", Font.PLAIN, 10);
+  static final Font DEFAULT_FONT = AppPreferences.createAppFont(Font.PLAIN, 10);
 
   private final EditableLabel label;
 

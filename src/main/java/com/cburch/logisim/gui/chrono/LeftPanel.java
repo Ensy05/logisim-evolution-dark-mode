@@ -35,6 +35,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.TransferHandler;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -122,7 +123,8 @@ public class LeftPanel extends JTable {
     model = chronoPanel.getModel();
 
     setLayout(new BorderLayout());
-    setBackground(Color.WHITE);
+    final var background = UIManager.getColor("Table.background");
+    setBackground(background != null ? background : getBackground());
 
     tableModel = new SignalTableModel();
     setModel(tableModel);

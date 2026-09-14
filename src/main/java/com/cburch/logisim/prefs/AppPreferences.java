@@ -24,7 +24,7 @@ import com.cburch.logisim.instance.StdAttr;
 import com.cburch.logisim.util.LocaleListener;
 import com.cburch.logisim.util.LocaleManager;
 import com.cburch.logisim.util.PropertyChangeWeakSupport;
-import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -54,6 +54,7 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 public class AppPreferences {
+  public static final String DEFAULT_APP_FONT_FAMILY = "0xProto Nerd Font Mono";
   // Export and print jobs may run off the EDT, so keep their palette override thread-local.
   private static final ThreadLocal<Boolean> PRINT_VIEW_COLORS = new ThreadLocal<>();
 
@@ -438,6 +439,15 @@ public class AppPreferences {
     }
   }
 
+  public static String getConfiguredAppFontFamily() {
+    final var appFont = APP_FONT.get();
+    return (appFont == null || appFont.isBlank()) ? DEFAULT_APP_FONT_FAMILY : appFont;
+  }
+
+  public static Font createAppFont(int style, int size) {
+    return new Font(getConfiguredAppFontFamily(), style, size);
+  }
+
   public static ImageIcon getScaledImageIcon(ImageIcon icon) {
     final var iconImage = icon.getImage();
     return new ImageIcon(
@@ -595,7 +605,7 @@ public class AppPreferences {
               Direction.EAST.toString()));
 
   public static final PrefMonitor<String> LookAndFeel =
-      create(new PrefMonitorString("LookAndFeel", FlatIntelliJLaf.class.getName()));
+      create(new PrefMonitorString("LookAndFeel", FlatDarkLaf.class.getName()));
 
   public static final String EDITOR_THEME_DEFAULT = "default";
   public static final String EDITOR_THEME_DARK = "dark";
@@ -611,7 +621,7 @@ public class AppPreferences {
           new PrefMonitorStringOpts("darkEditorTheme", EDITOR_THEMES, EDITOR_THEME_DARK));
 
   public static final PrefMonitor<String> APP_FONT =
-      create(new PrefMonitorString("AppFont", ""));
+      create(new PrefMonitorString("AppFont", DEFAULT_APP_FONT_FAMILY));
 
   // default grid colors
   public static final int DEFAULT_CANVAS_BG_COLOR = 0xFFFFFFFF;
@@ -628,6 +638,7 @@ public class AppPreferences {
   public static final int DEFAULT_COMPONENT_GHOST_COLOR = 0x99999999;
   public static final int DEFAULT_COMPONENT_ICON_COLOR = 0x00000000;
   public static final int DEFAULT_TEXT_TOOL_COLOR = 0x00000000;
+  public static final int DARK_TEXT_TOOL_COLOR = 0xFFFFFFFF;
   // default width-error colors
   public static final int DEFAULT_WIDTH_ERROR_COLOR = 0xFF7B00;
   public static final int DEFAULT_WIDTH_ERROR_CAPTION_COLOR = 0x550000;
@@ -702,6 +713,7 @@ public class AppPreferences {
       COMPONENT_SECONDARY_COLOR.set(DARK_COMPONENT_SECONDARY_COLOR);
       COMPONENT_GHOST_COLOR.set(DARK_COMPONENT_GHOST_COLOR);
       COMPONENT_ICON_COLOR.set(DARK_COMPONENT_ICON_COLOR);
+      TEXT_TOOL_COLOR.set(DARK_TEXT_TOOL_COLOR);
       KMAP_CELL_TEXT_COLOR.set(DARK_KMAP_CELL_TEXT_COLOR);
       TABLE_CURSOR_COLOR.set(DARK_TABLE_CURSOR_COLOR);
       TABLE_HIGHLIGHT_COLOR.set(DARK_TABLE_HIGHLIGHT_COLOR);
@@ -722,6 +734,7 @@ public class AppPreferences {
       COMPONENT_SECONDARY_COLOR.set(DEFAULT_COMPONENT_SECONDARY_COLOR);
       COMPONENT_GHOST_COLOR.set(DEFAULT_COMPONENT_GHOST_COLOR);
       COMPONENT_ICON_COLOR.set(DEFAULT_COMPONENT_ICON_COLOR);
+      TEXT_TOOL_COLOR.set(DEFAULT_TEXT_TOOL_COLOR);
       KMAP_CELL_TEXT_COLOR.set(DEFAULT_KMAP_CELL_TEXT_COLOR);
       TABLE_CURSOR_COLOR.set(DEFAULT_TABLE_CURSOR_COLOR);
       TABLE_HIGHLIGHT_COLOR.set(DEFAULT_TABLE_HIGHLIGHT_COLOR);

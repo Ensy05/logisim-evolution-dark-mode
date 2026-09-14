@@ -20,6 +20,7 @@ import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.data.AttributeOption;
 import com.cburch.logisim.data.Bounds;
 import com.cburch.logisim.data.Location;
+import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.util.UnmodifiableList;
 import java.awt.Color;
 import java.awt.Font;
@@ -39,7 +40,14 @@ public class Text extends AbstractCanvasObject {
   }
 
   public Text(int x, int y, String text) {
-    this(x, y, EditableLabel.LEFT, EditableLabel.BASELINE, text, DrawAttr.DEFAULT_FONT, Color.BLACK);
+    this(
+        x,
+        y,
+        EditableLabel.LEFT,
+        EditableLabel.BASELINE,
+        text,
+        DrawAttr.DEFAULT_FONT,
+        new Color(AppPreferences.TEXT_TOOL_COLOR.get()));
   }
 
   @Override

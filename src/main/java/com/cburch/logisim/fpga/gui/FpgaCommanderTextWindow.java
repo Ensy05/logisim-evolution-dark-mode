@@ -11,6 +11,7 @@ package com.cburch.logisim.fpga.gui;
 
 import com.cburch.contracts.BaseKeyListenerContract;
 import com.cburch.contracts.BaseWindowListenerContract;
+import com.cburch.logisim.prefs.AppPreferences;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -44,7 +45,7 @@ public class FpgaCommanderTextWindow extends JFrame
     ((DefaultCaret) textArea.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
     textArea.setForeground(fg);
     textArea.setBackground(bg);
-    textArea.setFont(new Font("monospaced", Font.PLAIN, FontSize));
+    textArea.setFont(AppPreferences.createAppFont(Font.PLAIN, FontSize));
     textArea.setEditable(false);
 
     clear();

@@ -35,6 +35,7 @@ import com.cburch.logisim.instance.Port;
 import com.cburch.logisim.instance.StdAttr;
 import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.tools.key.DirectionConfigurator;
+import com.cburch.logisim.util.ColorUtil;
 import com.cburch.logisim.util.GraphicsUtil;
 import java.awt.Color;
 import java.awt.Font;
@@ -481,7 +482,7 @@ public class MatrixKeypad extends InstanceFactory implements DynamicElementProvi
     final var startX = bounds.getX() + (int) (3 * scale);
     final var startY = bounds.getY() + (int) (3 * scale);
 
-    g.setFont(new Font("SansSerif", Font.BOLD, (int) (9 * scale)));
+    g.setFont(AppPreferences.createAppFont(Font.BOLD, (int) (9 * scale)));
     final var fontMetrics = g.getFontMetrics();
 
     g.setColor(COLOR_BODY);
@@ -547,7 +548,7 @@ public class MatrixKeypad extends InstanceFactory implements DynamicElementProvi
         }
         final var labelWidth = fontMetrics.stringWidth(label);
         final var labelAscent = fontMetrics.getAscent();
-        g.setColor(Color.WHITE);
+        g.setColor(ColorUtil.getComplementaryBlackWhite(keyColor));
         final var labelYPos = "*".equals(label)
             ? keyY + (keySize + labelAscent) / 2 + (int) (2 * scale)
             : keyY + (keySize + labelAscent) / 2 - (int) (1 * scale);
