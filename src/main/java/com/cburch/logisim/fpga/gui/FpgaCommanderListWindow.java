@@ -46,7 +46,7 @@ public class FpgaCommanderListWindow extends JFrame
     textArea.setForeground(fg);
     textArea.setSelectionBackground(fg);
     textArea.setSelectionForeground(bg);
-    textArea.setFont(new Font("monospaced", Font.PLAIN, 14));
+    textArea.setFont(AppPreferences.createAppFont(Font.PLAIN, 14));
     textArea.setModel(model);
     textArea.setCellRenderer(model.getMyRenderer());
     textArea.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

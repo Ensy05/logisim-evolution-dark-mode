@@ -47,7 +47,7 @@ public class OpenSaveIcon extends BaseIcon {
     g2.setColor(Color.LIGHT_GRAY);
     bds = getScaled(6, 10, 4, 4);
     g2.fillRect(bds.getX(), bds.getY(), bds.getWidth(), bds.getHeight());
-    g2.setColor(Color.BLACK);
+    g2.setColor(getThemeTextColor());
     bds = getScaled(8, 11, 1, 2);
     g2.fillRect(bds.getX(), bds.getY(), bds.getWidth(), bds.getHeight());
     g2.setColor(Color.MAGENTA);

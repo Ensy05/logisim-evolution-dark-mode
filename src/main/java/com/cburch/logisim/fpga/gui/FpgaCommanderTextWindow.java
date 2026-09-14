@@ -44,7 +44,7 @@ public class FpgaCommanderTextWindow extends JFrame
     ((DefaultCaret) textArea.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
     textArea.setForeground(fg);
     textArea.setBackground(bg);
-    textArea.setFont(new Font("monospaced", Font.PLAIN, FontSize));
+    textArea.setFont(AppPreferences.createAppFont(Font.PLAIN, FontSize));
     textArea.setEditable(false);
 
     clear();

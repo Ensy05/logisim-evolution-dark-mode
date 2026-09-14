@@ -45,7 +45,7 @@ public class FpConstant extends InstanceFactory {
 
   private static final int OUT = 0;
   private static final int PER_DELAY = 1;
-  private static final Font DEFAULT_FONT = new Font("monospaced", Font.PLAIN, 12);
+  private static final Font DEFAULT_FONT = AppPreferences.createAppFont(Font.PLAIN, 12);
 
   private static class FpConstantHdlGeneratorFactory
       extends AbstractConstantHdlGeneratorFactory {

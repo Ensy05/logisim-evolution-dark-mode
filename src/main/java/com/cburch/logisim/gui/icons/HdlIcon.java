@@ -25,11 +25,11 @@ public class HdlIcon extends BaseIcon {
 
   @Override
   protected void paintIcon(Graphics2D g2) {
-    g2.setColor(Color.WHITE);
+    g2.setColor(getControlFillColor());
     g2.fillRect(0, scale(4), scale(16), scale(12));
-    g2.setColor(Color.BLACK);
+    g2.setColor(getThemeTextColor());
     g2.drawRect(0, scale(4), scale(16), scale(12));
-    g2.setColor(Color.LIGHT_GRAY);
+    g2.setColor(getControlShadeColor());
     final var font = g2.getFont().deriveFont((float) getIconWidth() / (float) 4.5);
     var t = new TextLayout("LIBRARY", font, g2.getFontRenderContext());
     t.draw(

@@ -16,8 +16,8 @@ import com.cburch.logisim.gui.log.Signal;
 import com.cburch.logisim.gui.log.SignalInfo;
 import com.cburch.logisim.gui.menu.LogisimMenuBar;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
+import javax.swing.UIManager;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
@@ -122,7 +122,8 @@ public class LeftPanel extends JTable {
     model = chronoPanel.getModel();
 
     setLayout(new BorderLayout());
-    setBackground(Color.WHITE);
+    final var background = UIManager.getColor("Table.background");
+    setBackground(background != null ? background : getBackground());
 
     tableModel = new SignalTableModel();
     setModel(tableModel);

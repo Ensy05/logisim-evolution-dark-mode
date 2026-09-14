@@ -81,7 +81,7 @@ public class FpgaReportTabbedPane extends JTabbedPane
     textAreaInfo = new JTextArea(10, 50);
     textAreaInfo.setForeground(UIManager.getColor("TextArea.foreground"));
     textAreaInfo.setBackground(UIManager.getColor("TextArea.background"));
-    textAreaInfo.setFont(new Font("monospaced", Font.PLAIN, fontSize));
+    textAreaInfo.setFont(AppPreferences.createAppFont(Font.PLAIN, fontSize));
     textAreaInfo.setEditable(false);
     textAreaInfo.setText(null);
     var caret = (DefaultCaret) textAreaInfo.getCaret();
@@ -102,7 +102,7 @@ public class FpgaReportTabbedPane extends JTabbedPane
     warnings.setForeground(Color.ORANGE);
     warnings.setSelectionBackground(Color.ORANGE);
     warnings.setSelectionForeground(UIManager.getColor("List.background"));
-    warnings.setFont(new Font("monospaced", Font.PLAIN, fontSize));
+    warnings.setFont(AppPreferences.createAppFont(Font.PLAIN, fontSize));
     warnings.setModel(warningsList);
     warnings.setCellRenderer(warningsList.getMyRenderer());
     warnings.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -128,7 +128,7 @@ public class FpgaReportTabbedPane extends JTabbedPane
     errors.setForeground(Color.RED);
     errors.setSelectionBackground(Color.RED);
     errors.setSelectionForeground(UIManager.getColor("List.background"));
-    errors.setFont(new Font("monospaced", Font.PLAIN, fontSize));
+    errors.setFont(AppPreferences.createAppFont(Font.PLAIN, fontSize));
     errors.setModel(errorsList);
     errors.setCellRenderer(errorsList.getMyRenderer());
     errors.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -152,7 +152,7 @@ public class FpgaReportTabbedPane extends JTabbedPane
     textAreaConsole = new JTextArea(10, 50);
     textAreaConsole.setForeground(UIManager.getColor("TextArea.foreground"));
     textAreaConsole.setBackground(UIManager.getColor("TextArea.background"));
-    textAreaConsole.setFont(new Font("monospaced", Font.PLAIN, fontSize));
+    textAreaConsole.setFont(AppPreferences.createAppFont(Font.PLAIN, fontSize));
     textAreaConsole.setEditable(false);
     textAreaConsole.setText(null);
     caret = (DefaultCaret) textAreaConsole.getCaret();

@@ -99,11 +99,11 @@ public class Canvas extends JPanel implements LocaleListener, CanvasPaneContents
   private static final Color DEFAULT_ERROR_COLOR = new Color(192, 0, 0);
   private static final Color OSC_ERR_COLOR = DEFAULT_ERROR_COLOR;
   private static final Color SIM_EXCEPTION_COLOR = DEFAULT_ERROR_COLOR;
-  private static final Font ERR_MSG_FONT = new Font("Sans Serif", Font.BOLD, 18);
+  private static final Font ERR_MSG_FONT = AppPreferences.createAppFont(Font.BOLD, 18);
   private static final Color TICK_RATE_COLOR = new Color(0, 0, 92, 92);
-  private static final Font TICK_RATE_FONT = new Font("Monospaced", Font.PLAIN, 28);
+  private static final Font TICK_RATE_FONT = AppPreferences.createAppFont(Font.PLAIN, 28);
   private static final Color SINGLE_STEP_MSG_COLOR = Color.BLUE;
-  private static final Font SINGLE_STEP_MSG_FONT = new Font("Sans Serif", Font.BOLD, 12);
+  private static final Font SINGLE_STEP_MSG_FONT = AppPreferences.createAppFont(Font.BOLD, 12);
   public static final Color DEFAULT_ZOOM_BUTTON_COLOR = Color.WHITE;
   // public static BufferedImage image;
   private final Project proj;

@@ -36,8 +36,8 @@ import javax.swing.UIManager;
 public class RightPanel extends JPanel {
 
   private static final Font MSG_FONT =
-      AppPreferences.getScaledFont(new Font("Serif", Font.ITALIC, 12));
-  private static final Font TIME_FONT = new Font("Serif", Font.ITALIC, 9);
+      AppPreferences.getScaledFont(AppPreferences.createAppFont(Font.ITALIC, 12));
+  private static final Font TIME_FONT = AppPreferences.createAppFont(Font.ITALIC, 9);
   private static final long serialVersionUID = 1L;
   private static final int WAVE_HEIGHT = ChronoPanel.SIGNAL_HEIGHT;
   private static final int EXTRA_SPACE = 40;
@@ -70,7 +70,8 @@ public class RightPanel extends JPanel {
   private void configure() {
     final var n = model.getSignalCount();
     height = n * ChronoPanel.SIGNAL_HEIGHT;
-    setBackground(Color.WHITE);
+    final var background = UIManager.getColor("Panel.background");
+    setBackground(background != null ? background : getBackground());
     final var timeScale = model.getTimeScale();
     final var numTicks = ((model.getEndTime() - model.getStartTime()) + timeScale - 1) / timeScale;
     width = (int) (tickWidth * numTicks + EXTRA_SPACE + 0.5);
@@ -276,9 +277,9 @@ public class RightPanel extends JPanel {
     gfx.setRenderingHint(
         RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
     gfx.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    gfx.setColor(Color.WHITE);
+    gfx.setColor(getWaveBackground());
     gfx.fillRect(0, 0, paintWidth, paintHeight); // entire viewport, not just (width, height)
-    gfx.setColor(Color.BLACK);
+    gfx.setColor(getWaveForeground());
     if (rows.isEmpty()) {
       final var f = gfx.getFont();
       gfx.setFont(MSG_FONT);
@@ -293,7 +294,7 @@ public class RightPanel extends JPanel {
       return;
     }
     if (width > 32000) {
-      gfx.setColor(Color.BLACK);
+      gfx.setColor(getWaveForeground());
       gfx.setFont(MSG_FONT);
       gfx.drawString("Oops! Chronogram is too large to display.", 15, 15);
       gfx.drawString("Try zooming out, or reset the simulation.", 15, 29);
@@ -575,7 +576,7 @@ public class RightPanel extends JPanel {
           }
         }
         if (x1 - x0 > labelWidth) {
-          g.setColor(Color.BLACK);
+          g.setColor(getWaveForeground());
           g.drawString(v, x0 + 6, MID + 5);
         }
 
@@ -593,12 +594,12 @@ public class RightPanel extends JPanel {
       g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
       final var isBold = (model.getSpotlight() == signal);
       final var colors = chronoPanel.rowColors(signal.info, selected);
-      g.setColor(Color.WHITE);
+      g.setColor(getWaveBackground());
       g.fillRect(0, 0, width, ChronoPanel.GAP - 1);
       g.fillRect(0, LOW, width, ChronoPanel.GAP - 1);
       g.setColor(colors[0]);
       g.fillRect(0, HIGH, width, LOW - HIGH);
-      g.setColor(Color.BLACK);
+      g.setColor(getWaveForeground());
       drawSignal(g, isBold, colors);
     }
 
@@ -742,7 +743,7 @@ public class RightPanel extends JPanel {
       final var time0 = model.getStartTime();
       final var timeL = (time0 / divMajor) * divMajor;
       final var h = ChronoPanel.HEADER_HEIGHT - ChronoPanel.GAP;
-      g.setColor(Color.BLACK);
+      g.setColor(getWaveForeground());
       g.drawLine(0, height - 2, width, height - 2);
       for (var i = 0; true; i++) {
         final var t = timeL + divMinor * i;
@@ -757,6 +758,16 @@ public class RightPanel extends JPanel {
         } else {
           g.drawLine(x, h - 2, x, h);
         }
+      }
+
+      private Color getWaveBackground() {
+        final var background = UIManager.getColor("Panel.background");
+        return background != null ? background : (AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get()) ? new Color(0x2B, 0x2B, 0x2B) : Color.WHITE);
+      }
+
+      private Color getWaveForeground() {
+        final var foreground = UIManager.getColor("Label.foreground");
+        return foreground != null ? foreground : (AppPreferences.isDarkTheme(AppPreferences.LookAndFeel.get()) ? Color.WHITE : Color.BLACK);
       }
       g.setFont(f);
     }

@@ -17,6 +17,7 @@ import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.data.AttributeEvent;
 import com.cburch.logisim.data.AttributeListener;
 import com.cburch.logisim.data.AttributeSet;
+import com.cburch.logisim.prefs.AppPreferences;
 import com.cburch.logisim.util.EventSourceWeakSupport;
 import com.cburch.logisim.util.UnmodifiableList;
 
@@ -48,9 +49,9 @@ public class DrawingAttributeSet implements AttributeSet, Cloneable {
           DrawAttr.VALIGN_MIDDLE,
           DrawAttr.PAINT_STROKE,
           1,
-          Color.BLACK,
+          new Color(AppPreferences.COMPONENT_COLOR.get()),
           Color.WHITE,
-          Color.BLACK,
+          new Color(AppPreferences.TEXT_TOOL_COLOR.get()),
           10);
   private final List<Attribute<?>> attrs;
   private EventSourceWeakSupport<AttributeListener> listeners;

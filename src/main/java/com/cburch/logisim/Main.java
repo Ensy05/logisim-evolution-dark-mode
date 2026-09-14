@@ -53,21 +53,7 @@ public class Main {
         AppPreferences.applyThemeColors();
         
         // Apply global font preference
-        final var appFont = AppPreferences.APP_FONT.get();
-        if (appFont != null && !appFont.isBlank()) {
-          updateGlobalFont(appFont);
-        } else {
-          UIManager.put(
-              "ToolTip.font",
-            new FontUIResource("SansSerif", Font.BOLD, AppPreferences.getScaled(12)));
-          UIManager.put(
-              "Tree.font",
-            new FontUIResource("SansSerif", Font.BOLD, AppPreferences.getScaled(12)));
-          // don't need this
-          // UIManager.put(
-          //     "Label.font",
-          //   new FontUIResource("SansSerif", Font.BOLD, AppPreferences.getScaled(12)));
-        }
+        updateGlobalFont(AppPreferences.getConfiguredAppFontFamily());
       }
     } catch (ClassNotFoundException
         | UnsupportedLookAndFeelException

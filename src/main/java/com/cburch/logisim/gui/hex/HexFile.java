@@ -665,7 +665,7 @@ public class HexFile {
       previewHdr = new JLabel(S.get("hexFormatPreviewWords"));
       previewMem = new JTextArea();
       previewMem.setEditable(false);
-      previewMem.setFont(new Font("monospaced", Font.PLAIN, scaledTen));
+      previewMem.setFont(AppPreferences.createAppFont(Font.PLAIN, scaledTen));
       final var preview = new JPanel();
       preview.setLayout(new BoxLayout(preview, BoxLayout.Y_AXIS));
       preview.add(previewHdr);
@@ -674,7 +674,7 @@ public class HexFile {
       originalHdr = new JLabel(S.get("hexFormatOriginalBytes", this.reader.in.byteLength()));
       originalTxt = new JTextArea();
       originalTxt.setEditable(false);
-      originalTxt.setFont(new Font("monospaced", Font.PLAIN, scaledTen));
+      originalTxt.setFont(AppPreferences.createAppFont(Font.PLAIN, scaledTen));
       final var original = new JPanel();
       original.setLayout(new BoxLayout(original, BoxLayout.Y_AXIS));
       original.add(originalHdr);
@@ -734,7 +734,7 @@ public class HexFile {
 
       tabs = new JTabbedPane();
       tabs.setBorder(BorderFactory.createEmptyBorder(0, scaledTen, 0, 0));
-      tabs.setFont(new Font("Dialog", Font.BOLD, scaled(9)));
+      tabs.setFont(AppPreferences.createAppFont(Font.BOLD, scaled(9)));
       tabs.addTab(S.get("hexFormatDecodedTab"), preview);
       tabs.addTab(S.get("hexFormatOriginalTab"), original);
 
@@ -1825,10 +1825,10 @@ public class HexFile {
 
       preview = new JTextArea();
       preview.setEditable(false);
-      preview.setFont(new Font("monospaced", Font.PLAIN, scaled(10)));
+      preview.setFont(AppPreferences.createAppFont(Font.PLAIN, scaled(10)));
       JTabbedPane tabs = new JTabbedPane();
       tabs.setBorder(BorderFactory.createEmptyBorder(0, scaled(8), 0, 0));
-      tabs.setFont(new Font("Dialog", Font.BOLD, scaled(9)));
+      tabs.setFont(AppPreferences.createAppFont(Font.BOLD, scaled(9)));
       tabs.addTab(S.get("hexFormatPreviewTab"), new JScrollPane(preview));
       add(tabs, BorderLayout.CENTER);
 

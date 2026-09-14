@@ -621,7 +621,7 @@ public class AppPreferences {
           new PrefMonitorStringOpts("darkEditorTheme", EDITOR_THEMES, EDITOR_THEME_DARK));
 
   public static final PrefMonitor<String> APP_FONT =
-      create(new PrefMonitorString("AppFont", ""));
+      create(new PrefMonitorString("AppFont", DEFAULT_APP_FONT_FAMILY));
 
   // default grid colors
   public static final int DEFAULT_CANVAS_BG_COLOR = 0xFFFFFFFF;

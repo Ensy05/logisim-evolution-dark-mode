@@ -65,7 +65,7 @@ public class ExpressionRenderData {
     this.notation = notation;
     notSep = AppPreferences.getScaled(3);
     extraLeading = AppPreferences.getScaled(4);
-    expressionBaseFont = AppPreferences.getScaledFont(new Font(Font.MONOSPACED, Font.PLAIN, 14));
+    expressionBaseFont = AppPreferences.getScaledFont(AppPreferences.createAppFont(Font.PLAIN, 14));
     final var img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
     final Graphics2D g = (Graphics2D) img.getGraphics().create();
     if (AppPreferences.AntiAliassing.getBoolean()) {

@@ -129,7 +129,7 @@ public class AssemblyWindow
     north.add(combo);
     north.add(refresh);
 
-    document.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+    document.setFont(AppPreferences.createAppFont(Font.PLAIN, 12));
     document.setEditable(false);
     document.setPreferredSize(
         new Dimension(document.getWidth() * 4 / 5, Math.max(200, document.getHeight() * 2 / 3)));

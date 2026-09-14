@@ -31,7 +31,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class ProbeShape extends DynamicElement {
-  static final Font DEFAULT_FONT = new Font("monospaced", Font.PLAIN, 10);
+  static final Font DEFAULT_FONT = AppPreferences.createAppFont(Font.PLAIN, 10);
 
   private EditableLabel label;
 

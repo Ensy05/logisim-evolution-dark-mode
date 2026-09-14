@@ -24,27 +24,27 @@ public class ButtonIcon extends BaseIcon {
     var y = scale(11) + scale(state);
     final int[] xpos = {x, x + wh, scale(14), scale(3)};
     final int[] ypos = {y, y, scale(14), scale(14)};
-    g2.setColor(Color.LIGHT_GRAY);
+    g2.setColor(getControlShadeColor());
     g2.fillPolygon(xpos, ypos, 4);
-    g2.setColor(Color.BLACK);
+    g2.setColor(getThemeTextColor());
     g2.drawPolygon(xpos, ypos, 4);
     x = wh + scale(state);
     y = scale(state);
     final int[] xpos1 = {x, x, scale(14), scale(14)};
     final int[] ypos1 = {y, y + wh, scale(14), scale(3)};
-    g2.setColor(Color.LIGHT_GRAY);
+    g2.setColor(getControlShadeColor());
     g2.fillPolygon(xpos1, ypos1, 4);
-    g2.setColor(Color.BLACK);
+    g2.setColor(getThemeTextColor());
     g2.drawPolygon(xpos1, ypos1, 4);
-    g2.setColor(Color.WHITE);
+    g2.setColor(getControlFillColor());
     g2.fillRect(scale(state), scale(state), wh, wh);
-    g2.setColor(Color.BLACK);
+    g2.setColor(getThemeTextColor());
     g2.drawRect(scale(state), scale(state), wh, wh);
 
     final var s = "B";
     final var f = g2.getFont().deriveFont((float) wh);
     final var t = new TextLayout(s, f, g2.getFontRenderContext());
-    g2.setColor(Color.BLUE);
+    g2.setColor(getThemeTextColor());
     final var center = scale(state) + wh / 2;
     t.draw(
         g2,
